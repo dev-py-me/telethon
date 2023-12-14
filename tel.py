@@ -4,6 +4,7 @@ import sys
 import time
 import asyncio
 import requests, json
+from datetime import date
 # Import the client
 from telethon import TelegramClient, events
 from telethon.tl import types
@@ -101,9 +102,10 @@ async def worker(name):
             # os.chown(download_result, int(user_id), int(group_id))
             _,filename = os.path.split(download_result)
             final_path = os.path.join(download_path,filename)
+            fpath = os.path.join(download_path,"streamtape_{}.txt".format(date.today()))
             os.rename(download_result,final_path)
             await message.edit("[%s] Successfully downloaded to %s at %s" % (file_name, final_path, end_time))
-            with open(final_path, "rb") as file:
+            with open(fpath, "rb") as file:
               files = {'file': file}
               url = ul_video(ul_url,files)
               filemoon(url)
