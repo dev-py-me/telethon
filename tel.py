@@ -67,7 +67,7 @@ if(debug_enabled):
 else:
     logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.ERROR)
 
-number_of_parallel_downloads = int(os.environ.get('TG_MAX_PARALLEL',2))
+number_of_parallel_downloads = int(os.environ.get('TG_MAX_PARALLEL',1))
 maximum_seconds_per_download = int(os.environ.get('TG_DL_TIMEOUT',3600))
 proxy = None  # https://github.com/Anorov/PySocks
 
