@@ -38,7 +38,7 @@ def ul_video(ul_url,files):
 
 def filemoon(url):
     os.system(f"curl -d 'key=31525r7d0x3h23qpfytj9&url={url}' -H 'Content-Type: application/x-www-form-urlencoded' -X POST https://filemoonapi.com/api/remote/add")
-    fpath = "/content/drive/MyDrive/streamtape_{}.txt".format(date.today()))       
+    fpath = "/content/drive/MyDrive/streamtape_{}.txt".format(date.today())       
     file = open(fpath,"a+")
     #file = open("/sdcard/tg/streamlinks.txt","a+")
     file.writelines(f"\n{url}")
