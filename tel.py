@@ -38,7 +38,8 @@ def ul_video(ul_url,files):
 
 def filemoon(url):
     os.system(f"curl -d 'key=31525r7d0x3h23qpfytj9&url={url}' -H 'Content-Type: application/x-www-form-urlencoded' -X POST https://filemoonapi.com/api/remote/add")
-    file = open("/content/drive/MyDrive/streamlinks.txt","a+")
+    fpath = "/content/drive/MyDrive/streamtape_{}.txt".format(date.today()))       
+    file = open(fpath,"a+")
     #file = open("/sdcard/tg/streamlinks.txt","a+")
     file.writelines(f"\n{url}")
     file.close()
@@ -105,7 +106,7 @@ async def worker(name):
             fpath = os.path.join(download_path,"streamtape_{}.txt".format(date.today()))
             os.rename(download_result,final_path)
             await message.edit("[%s] Successfully downloaded to %s at %s" % (file_name, final_path, end_time))
-            with open(fpath, "rb") as file:
+            with open(final_path, "rb") as file:
               files = {'file': file}
               url = ul_video(ul_url,files)
               filemoon(url)
