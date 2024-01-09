@@ -38,7 +38,7 @@ def ul_video(ul_url,files):
 
 def filemoon(url):
     os.system(f"curl -d 'key=31525r7d0x3h23qpfytj9&url={url}' -H 'Content-Type: application/x-www-form-urlencoded' -X POST https://filemoonapi.com/api/remote/add")
-    fpath = "/home/runner/one/streamtape_{}.txt".format(date.today())       
+    fpath = "/datasets/_deepnote_work/streamtape_{}.txt".format(date.today())       
     file = open(fpath,"a+")
     #file = open("/sdcard/tg/streamlinks.txt","a+")
     file.writelines(f"\n{url}")
@@ -60,7 +60,7 @@ api_hash = '2d3673e18b462f8032c4eea2f50b9f52'
 #bot_token = get_env('TG_BOT_TOKEN', 'Enter your Telegram BOT token: ')
 bot_token = '1832176378:AAGhfQbgbTOo6id__4-OFDKz-PpmBJ34SS8'
 #download_path = get_env('TG_DOWNLOAD_PATH', 'Enter full path to downloads directory: ')
-download_path = '/home/runner/one/'
+download_path = '/datasets/_deepnote_work/'
 debug_enabled = ('DEBUG_ENABLED' in os.environ)
 if(debug_enabled):
     logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.DEBUG)
