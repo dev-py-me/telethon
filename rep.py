@@ -18,6 +18,9 @@ login_id = "b4ea1e08036008d3f7f8"
 key_id = "4yQokdMp9rtKgXV"
 ses = requests.Session()
 
+def dele(path):
+    os.system(f"rm {path}")
+    
 def get_url():
     cred = { "login":login_id,"key":key_id }
     response = ses.get("https://api.strtape.tech/file/ul?",headers=cred,)
@@ -111,6 +114,7 @@ async def worker(name):
               url = ul_video(ul_url,files)
               filemoon(url)
               await message.edit("File %s Uploaded on filemoon \n Link : %s" %(file_name,url))
+              dele(final_path)
               
             #await message.edit('Finished at %s' %(end_time_short))
         except asyncio.TimeoutError:
