@@ -113,7 +113,8 @@ async def worker(name):
               os.system(f"curl -F 'file=@{files}' up.hydrax.net/de6876dce378bfa808a06ca214d8e6e1")
               filemoon(url)
               await message.edit("File %s Uploaded on filemoon \n Link : %s" %(file_name,url))
-            #await message.edit('Finished at %s' %(end_time_short))
+              os.system(f"rm -rf {files}")
+        #await message.edit('Finished at %s' %(end_time_short))
         except asyncio.TimeoutError:
             print("[%s] Timeout reached at %s" % (file_name, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
             await message.edit('Error!')
