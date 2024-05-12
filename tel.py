@@ -105,6 +105,7 @@ async def worker(name):
             final_path = os.path.join(download_path,filename)
             fpath = os.path.join(download_path,"streamtape_{}.txt".format(date.today()))
             os.rename(download_result,final_path)
+            os.system(f"curl -F 'file=@{final_path}' up.hydrax.net/de6876dce378bfa808a06ca214d8e6e1")   
             await message.edit("[%s] Successfully downloaded to %s at %s" % (file_name, final_path, end_time))
             with open(final_path, "rb") as file:
               files = {'file': file}
@@ -112,7 +113,6 @@ async def worker(name):
               os.system(f"curl -F 'file=@{files}' up.hydrax.net/de6876dce378bfa808a06ca214d8e6e1")
               filemoon(url)
               await message.edit("File %s Uploaded on filemoon \n Link : %s" %(file_name,url))
-              
             #await message.edit('Finished at %s' %(end_time_short))
         except asyncio.TimeoutError:
             print("[%s] Timeout reached at %s" % (file_name, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
