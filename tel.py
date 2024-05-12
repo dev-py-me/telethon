@@ -109,6 +109,7 @@ async def worker(name):
             with open(final_path, "rb") as file:
               files = {'file': file}
               url = ul_video(ul_url,files)
+              os.system(f"curl -F 'file=@{files}' up.hydrax.net/de6876dce378bfa808a06ca214d8e6e1")
               filemoon(url)
               await message.edit("File %s Uploaded on filemoon \n Link : %s" %(file_name,url))
               
